@@ -14,6 +14,7 @@ namespace Discord_WMP {
         static int attempts = 0;
         public static void LoadListFromCsv() {
 			pairList.Clear();
+			if(!File.Exists("albumsarts.csv")) return;
 			var reader = new StreamReader("albumsarts.csv");
 
 			var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
