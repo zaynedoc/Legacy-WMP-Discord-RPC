@@ -200,5 +200,6 @@
   <PropertyGroup>
     <PreBuildEvent>if exist "$(ProjectDir)\CurrentCommit.txt" del "$(ProjectDir)\CurrentCommit.txt"
 git rev-parse --short HEAD &gt; "$(ProjectDir)\CurrentCommit.txt"</PreBuildEvent>
+    <PostBuildEvent>powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$(ProjectDir)CreateDesktopShortcut.ps1" -TargetPath "$(TargetPath)" -WorkingDirectory "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
 </Project>
