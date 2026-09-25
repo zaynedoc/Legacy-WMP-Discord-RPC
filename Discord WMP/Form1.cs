@@ -572,7 +572,7 @@ namespace Discord_WMP {
 
                 client.SetPresence(new RichPresence() {
                     Details = data.title.Truncate(32).Extend(5),
-                    State = data.artist.Truncate(32).Extend(5),
+                    State = $"By {data.artist}".Truncate(32).Extend(5),
                     Assets = new Assets() {
                         LargeImageKey = albumart,
                         LargeImageText = data.album.Truncate(32).Extend(5),
@@ -582,7 +582,7 @@ namespace Discord_WMP {
                         Start = DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(data.position_sec)),
                     },
                     Buttons = new DiscordRPC.Button[] {
-                        new DiscordRPC.Button() { Label = playbar.Truncate(10), Url = $"https://www.google.com/search?q={WebUtility.UrlEncode($"{data.title} by {data.artist}")}" }
+                        new DiscordRPC.Button() { Label = "Google This Song", Url = $"https://www.google.com/search?q={WebUtility.UrlEncode($"{data.title} by {data.artist}")}" }
                     }
                 });
                 send_data_lasttime = true;
