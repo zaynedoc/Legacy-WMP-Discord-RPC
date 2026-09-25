@@ -582,7 +582,7 @@ namespace Discord_WMP {
                         Start = DateTime.UtcNow.Subtract(TimeSpan.FromSeconds(data.position_sec)),
                     },
                     Buttons = new DiscordRPC.Button[] {
-                        new DiscordRPC.Button() { Label = playbar.Truncate(10), Url = "https://bing.com" }
+                        new DiscordRPC.Button() { Label = playbar.Truncate(10), Url = $"https://www.google.com/search?q={WebUtility.UrlEncode($"{data.title} by {data.artist}")}" }
                     }
                 });
                 send_data_lasttime = true;
