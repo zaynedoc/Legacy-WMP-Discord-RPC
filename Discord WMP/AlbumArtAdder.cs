@@ -55,6 +55,7 @@ namespace Discord_WMP {
             if(aaa) per.priority = bruh;
             Thread.Sleep(66);
 			albummanager.pairList.Add(per);
+			albummanager.writecsv();
             showinlistbox();
         end:;
         }
@@ -84,6 +85,7 @@ namespace Discord_WMP {
             if(aaa) per.priority = bruh;
             Thread.Sleep(66);
 			albummanager.pairList.Add(per);
+			albummanager.writecsv();
             showinlistbox();
         end:;
         }
@@ -101,6 +103,7 @@ namespace Discord_WMP {
             if(aaa) per.priority = bruh;
             Thread.Sleep(66);
 			albummanager.pairList.Add(per);
+			albummanager.writecsv();
             showinlistbox();
         end:;
         }
@@ -117,6 +120,7 @@ namespace Discord_WMP {
 			if(aaa) per.priority = bruh;
 			Thread.Sleep(66);
 			albummanager.pairList.Add(per);
+			albummanager.writecsv();
 			showinlistbox();
 		end:;
 		}
@@ -133,6 +137,7 @@ namespace Discord_WMP {
 			if(aaa) per.priority = bruh;
 			Thread.Sleep(66);
 			albummanager.pairList.Add(per);
+			albummanager.writecsv();
 			showinlistbox();
 		end:;
 		}
