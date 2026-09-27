@@ -1,43 +1,50 @@
-# Windows Media Player Discord RPC & Media Info bridge
-# Features:
-* bridge Windows Media Player playing media info and Windows 10/11 system media info. This allows you to use keyboard media keys and apps like wallpaper engine can show the playing media on wallpaper:           
+# Legacy WMP Discord RPC
 
-* take info from running WMP instance and put it into discord
-* minimize onto tray to not take space on taskbar ~~(press minimize button on top right)~~ *minimizes automatically when you open some other software in 2.0*
-* smart album art manager
+An independent derivative of [Windows Media Player Discord RPC](https://github.com/T0biasCZe/Windows-Media-Player-Discord-RPC) by T0biasCZe.
 
-On Windows 7, please install [.NET 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer)       
-On newer Windows, install [.NET 4.8.1](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net481-web-installer)
+This project reads the currently playing track from **Windows Media Player Legacy** and displays it as a Discord Rich Presence. It is maintained as a personal standalone version and keeps the original project's MPL-2.0 license.
 
-https://github.com/T0biasCZe/Windows-Media-Player-Discord-RPC/assets/44525446/994c0095-9755-4f90-8b92-f5e699c8d0a1
+## What it does
 
+- Displays the current track, artist, album, and elapsed time in Discord.
+- Offers a **Google This Song** Rich Presence button.
+- Uses Discord Rich Presence art assets for per-album cover art.
+- Can optionally publish WMP media information to Windows' system media controls.
+- Runs from the notification area after it starts.
 
-![obrazek](https://user-images.githubusercontent.com/44525446/219905110-305fffc3-90f9-48e9-84b2-52595ea3bc7c.png)
+`WebStream` has intentionally been removed. This repository contains no standalone streaming or LAN web-server component.
 
-# Known Issues  
-* if you launch the program before Windows Media Player, it wont be able to read the playback info
+## Requirements
 
+- Windows Media Player Legacy.
+- The Discord desktop application, running and signed in.
+- .NET Framework 4.8 or later.
 
-# Album art manager
+## Run it
 
-* you must create application on https://discord.com/developers/applications to be able to use custom album art
-* create app there, and put the app id into this program
-* upload your cover arts + bundled textures into Rich Presence -> art assets
-* open art manager by pressing the 3 dots button in this program
-* on left, you have list of already paired album arts
-* on right, you have 3 options how "pair" album arts with songs
-1) by exact album name, past the album name into the correct field, and put the album "key"/filename into the filename key
-2) by album name containing specific string. enter string of words into the field, and album art filename that will show for songs that have album name with containing this string. you can also specify that it must not contain some string
-3) same as 2 except with song name instead of album name
-*you may also enter priority in which the album art is searched. 0 is highest priority, 9 is lower priority
-*click close on the album manager window, and it will automatically save (the pairs are saved in albumarts.csv, do not delete the file!)
-![obrazek](https://user-images.githubusercontent.com/44525446/219904571-69262432-adab-40d5-aa97-b849181924e0.png)
-* if the info was entered correctly, it should now show the matching album art file name in bottom corner:
-* ![image](https://github.com/T0biasCZe/Windows-Media-Player-Discord-RPC/assets/44525446/1dd259ae-15b9-4d53-9b07-51873d5cf7ea)
+1. Start Windows Media Player Legacy and play a tagged music file.
+2. Run `Discord WMP.exe` from `Discord WMP/bin/Release`, or use the desktop shortcut created after a Release build.
+3. In the RPC app's top text box, enter the **Application ID** for your own Discord Developer Portal application.
+4. Exit the app from its notification-area menu and open it again after changing the Application ID.
 
+## Per-album Discord cover art
 
-if you do not want to use the custom album arts, you can use app id "1076519967631093891"
+1. Create a Discord application in the [Discord Developer Portal](https://discord.com/developers/applications) and copy its **Application ID**.
+2. Enter that ID in the RPC app, then restart the app.
+3. In **Rich Presence -> Art Assets**, upload square cover images. Use simple unique keys such as `official_number`.
+4. Also upload fallback assets named `wmp_icon` and `wmp_empty`.
+5. In the RPC app, click the small `;;;` button to open the Album Art Manager.
+6. Under **Finding art based on specific album name**, enter the WMP Album tag, the Discord asset key, and priority `0`; then select **Add pair**.
+7. Close the Album Art Manager to save the mapping.
 
-# WMP Lyrics
-* My lyrics display software is bundled with the latest release
-* For more information see the [wmp lyrics repo readme](https://github.com/T0biasCZe/Windows-Media-Player-Lyrics/blob/master/README.md) 
+Mappings are stored in `albumsarts.csv` next to the running executable. The album name comes from the music file's metadata, not its folder name.
+
+## Build
+
+Build the `Discord WMP.sln` solution in the `Release | Any CPU` configuration. A successful build refreshes the desktop shortcut named **Legacy WMP Discord RPC (Fork)**.
+
+## Attribution and license
+
+Original project: [T0biasCZe/Windows-Media-Player-Discord-RPC](https://github.com/T0biasCZe/Windows-Media-Player-Discord-RPC)
+
+This derivative is distributed under the included [Mozilla Public License 2.0](LICENSE.txt).
