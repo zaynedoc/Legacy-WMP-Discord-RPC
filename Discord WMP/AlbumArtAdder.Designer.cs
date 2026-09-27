@@ -25,6 +25,7 @@
         private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
 			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.removeSelected = new System.Windows.Forms.Button();
 			this.specificalbumname_name = new System.Windows.Forms.TextBox();
 			this.titlecontainsword_contains = new System.Windows.Forms.TextBox();
 			this.titlecontainsword_containsnot = new System.Windows.Forms.TextBox();
@@ -65,6 +66,16 @@
 			this.listBox1.Name = "listBox1";
 			this.listBox1.Size = new System.Drawing.Size(680, 433);
 			this.listBox1.TabIndex = 0;
+			//
+			// removeSelected
+			//
+			this.removeSelected.Location = new System.Drawing.Point(570, 5);
+			this.removeSelected.Name = "removeSelected";
+			this.removeSelected.Size = new System.Drawing.Size(126, 23);
+			this.removeSelected.TabIndex = 30;
+			this.removeSelected.Text = "Remove selected";
+			this.removeSelected.UseVisualStyleBackColor = true;
+			this.removeSelected.Click += new System.EventHandler(this.removeSelected_Click);
 			// 
 			// specificalbumname_name
 			// 
@@ -334,6 +345,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(942, 476);
 			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.removeSelected);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.listBox1);
 			this.MaximizeBox = false;
@@ -353,6 +365,7 @@
 
         private Component1 component11;
         private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.Button removeSelected;
         private System.Windows.Forms.TextBox titlecontainsword_contains;
         private System.Windows.Forms.TextBox titlecontainsword_containsnot;
         private System.Windows.Forms.TextBox titlecontainsword_contains_filename;

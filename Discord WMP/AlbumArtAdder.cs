@@ -58,6 +58,19 @@ namespace Discord_WMP {
             showinlistbox();
         end:;
         }
+
+        private void removeSelected_Click(object sender, EventArgs e) {
+            // The first row is the column heading, not a saved pair.
+            if(listBox1.SelectedIndex <= 0) {
+                MessageBox.Show("Select a saved pair first.");
+                return;
+            }
+
+            int pairIndex = listBox1.SelectedIndex - 1;
+            albummanager.pairList.RemoveAt(pairIndex);
+            albummanager.writecsv();
+            showinlistbox();
+        }
         private void button1_Click_1(object sender, EventArgs e) {
             if(albumcontainsword_contains.Text == "") { MessageBox.Show("contains not filled in"); goto end; }
             if(albumcontainsword_filename.Text == "") { MessageBox.Show("Album not filled in"); goto end; }
