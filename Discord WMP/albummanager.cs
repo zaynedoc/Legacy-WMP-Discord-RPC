@@ -12,10 +12,11 @@ namespace Discord_WMP {
     public static class albummanager {
         public static List<pair> pairList = new List<pair>();
         static int attempts = 0;
+        private static readonly string AlbumArtCsvPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "albumsarts.csv");
         public static void LoadListFromCsv() {
 			pairList.Clear();
-			if(!File.Exists("albumsarts.csv")) return;
-			var reader = new StreamReader("albumsarts.csv");
+			if(!File.Exists(AlbumArtCsvPath)) return;
+			var reader = new StreamReader(AlbumArtCsvPath);
 
 			var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             csv.Read();
@@ -36,7 +37,7 @@ namespace Discord_WMP {
 			reader.Close();
         }
         public static void writecsv() {
-            using(var writer = new StreamWriter("albumsarts.csv"))
+            using(var writer = new StreamWriter(AlbumArtCsvPath))
             using(var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
                 csv.WriteHeader<pair>();
                 csv.NextRecord();
