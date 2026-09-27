@@ -153,6 +153,7 @@ namespace Discord_WMP {
 			}*/
 			Console.SetWindowSize(50, 15);
             InitializeComponent();
+			client_id.Leave += client_id_Leave;
 
 			linkLabel2.Text = $"http://localhost:{random_port}/";
 			linkLabel2.Links.Add(0, linkLabel2.Text.Length, $"http://localhost:{random_port}/");
@@ -219,8 +220,21 @@ namespace Discord_WMP {
 		}
 
 		private void client_id_TextChanged(object sender, EventArgs e) {
-			//set rpc_id in settings1 to client_id.Text
-			Settings1.Default.RPC_ID = client_id.Text;
+			if(loadingsettings) return;
+			Settings1.Default.RPC_ID = client_id.Text.Trim();
+			Settings1.Default.Save();
+		}
+		private void client_id_Leave(object sender, EventArgs e) {
+			if(loadingsettings || client_id.Text.Trim().Length <= 8) return;
+			if(client != null) {
+				try {
+					Deinitialize();
+				}
+				catch(Exception ex) {
+					Console.WriteLine("Could not reconnect Discord RPC: " + ex.Message);
+				}
+			}
+			initialized = false;
 		}
 		private static bool loadingsettings = false;
 		private void settingsload() {
