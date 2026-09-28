@@ -586,7 +586,7 @@ namespace Discord_WMP {
 
                 client.SetPresence(new RichPresence() {
                     Details = $"\"{data.title.Truncate(30).Extend(5)}\"",
-                    State = $"By {data.artist.Truncate(19).Extend(5)}",
+                    State = $"{data.artist.Truncate(19).Extend(5)}",
                     Assets = new Assets() {
                         LargeImageKey = albumart,
                         LargeImageText = data.album.Truncate(32).Extend(5),
